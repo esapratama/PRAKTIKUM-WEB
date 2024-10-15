@@ -23,8 +23,9 @@ $text = 'I like apple pie.';
 $new_text = preg_replace($pattern, $replacement, $text);
 echo $new_text;
 
-$pattern = '/go*d/';
-$text = 'god is good.';
+$pattern = '/[o]{1,3}/'; // Mengubah pola untuk mencocokkan 1 hingga 3 huruf 'o'
+$text = 'good is good.';
+
 if (preg_match($pattern, $text, $matches)) {
     echo "Cocokkan: " . $matches[0];
 } else {
