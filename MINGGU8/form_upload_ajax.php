@@ -1,5 +1,3 @@
-// prak 3 nomor 10\
-
 <!DOCTYPE html>
 <html>
 <head>
