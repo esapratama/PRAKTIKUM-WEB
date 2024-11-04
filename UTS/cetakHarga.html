@@ -75,6 +75,12 @@
         button:hover {
             background-color: #28a745;
         }
+
+        /* Style for the result section */
+        #result {
+            margin-top: 20px;
+            font-size: 16px;
+        }
     </style>
 </head>
 
@@ -84,14 +90,15 @@
     </header>
 
     <nav>
-        <a href="home.php">Home</a> <!-- Home page -->
-        <a href="cetakHarga.html">Cek Harga</a> <!-- Current Page -->
-        <a href="logout.php">Logout</a> <!-- Logout Page -->
+        <a href="home.php">Home</a>
+        <a href="cetakHarga.html">Cek Harga</a>
+        <a href="logout.php">Logout</a>
     </nav>
 
     <div class="container">
         <h2>Cek Harga</h2>
-        <form action="prosesHarga.php" method="POST">
+        <!-- modifikasi -->
+        <form id="priceForm" onsubmit="calculatePrice(event)">
             <div class="form-group">
                 <label for="berat">Berat (kg):</label>
                 <input type="number" id="berat" name="berat" min="1" value="1" required>
@@ -123,15 +130,29 @@
                 </select>
             </div>
 
-            <nav>
-                <a href="home.php">Home</a>
-                <a href="cetakHarga.html">Cek Harga</a>
-                <a href="logout.php">Logout</a>
-            </nav>
-
             <button type="submit">CHECK</button>
         </form>
+
+        <!-- Result area for displaying output -->
+        <div id="result"></div>
     </div>
+
+    <script>
+        function calculatePrice(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const formData = new FormData(document.getElementById('priceForm'));
+
+            fetch('prosesHarga.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').innerHTML = data; // Display the result in the result div
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
 </body>
 
 </html>

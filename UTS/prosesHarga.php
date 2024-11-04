@@ -26,17 +26,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Hitung total harga sebelum diskon
     $totalHarga = $berat * $hargaPerKilo;
+    $diskonAmount = 0; // Inisialisasi diskon
 
     // Diskon untuk member
     if ($diskon === 'member') {
-        $totalHarga *= 0.9;
+        $diskonAmount = $totalHarga * 0.1;
     }
 
     // Diskon untuk kupon (gratis 2 kg)
     if ($diskon === 'kupon' && $berat >= 2) {
-        $totalHarga -= 2 * $hargaPerKilo;
+        $diskonAmount = 2 * $hargaPerKilo;
     }
 
-    echo "Total harga: Rp " . number_format($totalHarga, 0, ',', '.');
+    // Hitung total setelah diskon
+    $totalBayar = $totalHarga - $diskonAmount;
+
+    
+    echo "<p>Total transaksi adalah Rp " . number_format($totalHarga, 0, ',', '.') . "</p>";
+    echo "<p>Total diskon adalah Rp " . number_format($diskonAmount, 0, ',', '.') . "</p>";
+    echo "<p style='color: red;'>Yang harus dibayarkan adalah Rp " . number_format($totalBayar, 0, ',', '.') . "</p>";
 }
 ?>
