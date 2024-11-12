@@ -75,7 +75,7 @@
         <h2>Laundry Seventeen</h2>
     </header>
     <div class="login-container">
-        <form id="loginForm" method="post" action="halamanLogin.php">
+        <form id="loginForm" method="post" action="home.php">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username">
@@ -101,6 +101,24 @@
             // Get form values
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+
+            // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            //     // Ambil nilai username dan password dari form
+            //     $username = $_POST['username'];
+            //     $password = $_POST['password'];
+
+            //     if (!empty($username) && !empty($password) && strlen($password) <= 6 && preg_match('/[A-Z]/', $password) && preg_match('/[a-z]/', $password)) {
+            //         // menyimpan username ke dalam session
+            //         $_SESSION['username'] = $username;
+            //         header('Location: home.php');
+            //         exit;
+            //     } else {
+            //         $error_message = 'Username atau password tidak valid';
+            //         header('Location: login.php?error='.urlencode($error_message));
+            //         exit;
+            //     }
+            // }
+
 
             // Username validation
             if (username === '') {

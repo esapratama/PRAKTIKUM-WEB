@@ -1,9 +1,5 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])) {
-    header('Location: halamanLogin.php');
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +60,11 @@ if (!isset($_SESSION['username'])) {
             text-align: center;
         }
 
+        h2 {
+            color: #28a745;
+            text-align: center;
+        }
+
         .profile {
             text-align: left;
         }
@@ -102,6 +103,7 @@ if (!isset($_SESSION['username'])) {
             bottom: 0;
             width: 100%;
         }
+
     </style>
 </head>
 
@@ -123,8 +125,8 @@ if (!isset($_SESSION['username'])) {
     <div class="container">
         <div class="slider">
             <div class="slides">
-                <!-- <img src="img/banner1.jpg" alt="Banner1">
-                <img src="img/banner2.jpg" alt="Banner2"> -->
+                <img src="img/banner1.jpg" alt="Banner1">
+                <img src="img/banner2.jpg" alt="Banner2">
                 <img src="img/banner3.jpg" alt="Banner3">
             </div>
         </div>
@@ -153,9 +155,9 @@ if (!isset($_SESSION['username'])) {
             var slideCount = slides.length;
 
             function showNextSlide() {
-                slides.eq(currentIndex).fadeOut(1000, function () {
+                slides.eq(currentIndex).fadeOut(500, function () {
                     currentIndex = (currentIndex + 1) % slideCount;
-                    slides.eq(currentIndex).fadeIn(1000);
+                    slides.eq(currentIndex).fadeIn(500);
                 });
             }
 

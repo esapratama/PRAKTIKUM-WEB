@@ -133,13 +133,13 @@
             <button type="submit">CHECK</button>
         </form>
 
-        <!-- Result area for displaying output -->
+        <!-- hasil output -->
         <div id="result"></div>
     </div>
 
     <script>
         function calculatePrice(event) {
-            event.preventDefault(); // Prevent the default form submission
+            event.preventDefault(); // hasil submit
             const formData = new FormData(document.getElementById('priceForm'));
 
             fetch('prosesHarga.php', {
